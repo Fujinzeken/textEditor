@@ -13,6 +13,9 @@ const Preview: React.FC<PostDataProp> = ({ post, topic, setShowPreview }) => {
   const [loading, setLoading] = useState(false);
 
   const handleSave = () => {
+    if (post === "" || topic === "") {
+      return;
+    }
     setLoading(true);
     setTimeout(() => {
       setShowPreview(false);

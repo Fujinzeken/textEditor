@@ -77,7 +77,10 @@ body {
 }
 
 .button {
-  width: 20%;
+  display: flex;
+  padding: 10px;
+  border-radius: 20px !important;
+  width: 150px;
 }
 
 .topic-input::placeholder {

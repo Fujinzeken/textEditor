@@ -47,7 +47,7 @@ const Menu = ({ editor }) => {
   }
 
   return (
-    <div className="menu-bar pb-1 d-flex align-items-center justify-content-between p-2">
+    <div className="menu-bar pb-1 d-flex align-items-center p-2">
       <div className="d-flex align-items-center gap-2">
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}
@@ -95,12 +95,6 @@ const Menu = ({ editor }) => {
           className={editor.isActive("link") ? "is-active" : ""}
         >
           <Link size={16} />
-        </button>
-      </div>
-
-      <div className="d-flex gap-2">
-        <button onClick={() => editor.chain().focus().undo().run()}>
-          <Undo size={16} />
         </button>
       </div>
     </div>
