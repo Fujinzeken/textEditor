@@ -131,7 +131,6 @@ button.is-active {
 /* Basic editor styles */
 .tiptap {
   padding: 10px;
-  border-top: 1px solid grey;
   background: #fff;
   border-radius: 0 0 5px 5px;
   min-height: 100px;
