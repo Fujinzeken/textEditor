@@ -15,7 +15,7 @@ function MyEditor() {
   const [showPreview, setShowPreview] = useState(false);
   const [topic, setTopic] = useState("");
   const [content, setContent] = useState("");
-  // Use the Tiptap editor hook
+  // Using the Tiptap editor hook
   const editor = useEditor({
     extensions: [
       StarterKit,
