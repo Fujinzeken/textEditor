@@ -2,32 +2,191 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  /* overflow: hidden; */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  * {
+    @apply border-border;
   }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.editor-wrapper {
+  width: 80%;
+}
+
+.text-editor {
+  border-radius: 5px;
+  border: 1px solid grey;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.button {
+  width: 20%;
+}
+
+.topic-input::placeholder {
+  color: grey;
+  font-weight: 300;
+}
+
+.topic-input {
+  border-color: grey !important;
+  box-shadow: none !important;
+}
+.menu-bar {
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+.menu-bar button {
+  border-radius: 5px;
+  border: 1px solid grey;
+  margin: 7px;
+}
+
+button.is-active {
+  background: rgb(197, 197, 197);
+  /* padding: 2px; */
+  border-radius: 2px;
+}
+
+.preview-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(25, 25, 25, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.preview-wrapper {
+  background: #fff;
+  width: 50%;
+  opacity: 1;
+}
+
+.post-container {
+  max-height: 300px;
+  overflow-y: auto;
+}
+/* Basic editor styles */
+.tiptap {
+  padding: 10px;
+  border-top: 1px solid grey;
+  background: #fff;
+  border-radius: 0 0 5px 5px;
+  min-height: 100px;
+  outline: none;
+}
+
+.tiptap > * + * {
+  margin-top: 0.75em;
+}
+
+.tiptap ul,
+.tiptap ol {
+  padding: 0 1rem;
+}
+
+.tiptap h1,
+.tiptap h2,
+.tiptap h3,
+.tiptap h4,
+.tiptap h5,
+.tiptap h6 {
+  line-height: 1.1;
+}
+
+.tiptap code {
+  background-color: rgba(#616161, 0.1);
+  color: #616161;
+}
+
+.tiptap pre {
+  background: #0d0d0d;
+  color: #fff;
+  font-family: "JetBrainsMono", monospace;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+.tiptap code {
+  color: inherit;
+  padding: 0;
+  background: none;
+  font-size: 0.8rem;
+}
+
+.tiptap img {
+  max-width: 100%;
+  height: auto;
+}
+
+.tiptap blockquote {
+  padding-left: 1rem;
+  border-left: 2px solid rgba(#0d0d0d, 0.1);
+}
+
+.tiptap hr {
+  border: none;
+  border-top: 2px solid rgba(#0d0d0d, 0.1);
+  margin: 2rem 0;
 }
