@@ -62,13 +62,7 @@ const Menu = ({ editor }) => {
         >
           <Underline size={16} />
         </button>
-        <button
-          onClick={() => editor.chain().focus().toggleStrike().run()}
-          disabled={!editor.can().chain().focus().toggleStrike().run()}
-          className={editor.isActive("strike") ? "is-active" : ""}
-        >
-          <Strikethrough size={16} />
-        </button>
+
         <button
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={!editor.can().chain().focus().toggleItalic().run()}
@@ -107,9 +101,6 @@ const Menu = ({ editor }) => {
       <div className="d-flex gap-2">
         <button onClick={() => editor.chain().focus().undo().run()}>
           <Undo size={16} />
-        </button>
-        <button onClick={() => editor.chain().focus().redo().run()}>
-          <Redo size={16} />
         </button>
       </div>
     </div>
